@@ -10,6 +10,8 @@ Only after the user activates Level for a tab, the browser provides Level with t
 
 Level does not record, retain, transmit, sell, or share audio.
 
+For Chrome Web Store disclosure purposes, this transient local audio processing is classified as handling **website content**. It is used only to provide Level's user-facing audio controls.
+
 ## Data stored locally
 
 Level uses the browser extension storage API to store:
@@ -17,9 +19,12 @@ Level uses the browser extension storage API to store:
 - general extension settings;
 - selected listening modes and output percentages;
 - optional per-website preferences, indexed by website hostname;
+- the hostname and page title of the current or audible tab, used to show the user which tab Level will control;
 - active-session metadata for the current browser session.
 
 This information remains in the user's browser profile. Website preferences can be removed individually or cleared together from the settings page.
+
+For Chrome Web Store disclosure purposes, handling a tab hostname or title is classified as **web history**. Level does not build, retain, or transmit a general browsing-history record.
 
 ## Network activity
 
@@ -38,6 +43,8 @@ Level does not request broad website host permissions.
 ## Disclosure and sale
 
 Level does not sell, rent, transfer, or disclose personal data to third parties. It contains no advertising SDK, analytics SDK, or third-party tracking code.
+
+Level's use of information received from browser APIs adheres to the Chrome Web Store User Data Policy, including the Limited Use requirements. Data is used only to provide or improve Level's single, user-facing purpose.
 
 ## Children
 
