@@ -1,6 +1,6 @@
 {
   "name": "level-smart-volume-for-brave",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "A private, adaptive volume leveller for Brave and Chromium browsers.",
   "type": "module",
