@@ -31,6 +31,8 @@ for (const [sourceName, targetName, width, height] of storeRenders) {
   const target = path.join(root, "assets/store", targetName);
   await sharp(source, { density: 144 })
     .resize(width, height, { fit: "fill" })
+    .flatten({ background: "#0d0c13" })
+    .removeAlpha()
     .png()
     .toFile(target);
 }
