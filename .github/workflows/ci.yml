@@ -1,0 +1,43 @@
+name: Verify Level
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install development dependencies
+        run: npm ci
+
+      - name: Regenerate brand assets
+        run: npm run assets
+
+      - name: Verify source and audio logic
+        run: npm run check
+
+      - name: Build store package
+        run: npm run package
+
+      - name: Upload verified package
+        uses: actions/upload-artifact@v4
+        with:
+          name: level-extension-package
+          path: dist/*.zip
+          if-no-files-found: error

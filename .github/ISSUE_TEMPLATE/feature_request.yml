@@ -1,0 +1,31 @@
+name: Feature request
+description: Propose an improvement that fits Level's single purpose
+title: "[Idea]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Listening problem
+      description: What real audio or control problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Proposed behaviour
+      description: Describe what Level should do from the user's perspective.
+    validations:
+      required: true
+  - type: textarea
+    id: privacy
+    attributes:
+      label: Local-only path
+      description: Can this work without accounts, servers, remote models, tracking, or new broad permissions?
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Product fit
+      options:
+        - label: This request relates directly to tab-audio consistency, intelligibility, safety, or control.
+          required: true

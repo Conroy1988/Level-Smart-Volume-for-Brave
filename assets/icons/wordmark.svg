@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="240" viewBox="0 0 1024 240">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#BFB0FF"/><stop offset="1" stop-color="#64EFD9"/></linearGradient></defs>
+  <rect width="1024" height="240" rx="44" fill="#100E17"/>
+  <path d="M55 128h38l22-67 39 116 28-84 18 35h42" fill="none" stroke="url(#g)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="280" y="134" fill="#F8F6FF" font-family="Arial, sans-serif" font-size="82" font-weight="800" letter-spacing="14">LEVEL</text>
+  <text x="285" y="177" fill="#AAA3BA" font-family="Arial, sans-serif" font-size="20" letter-spacing="3">SMART VOLUME FOR BRAVE</text>
+</svg>

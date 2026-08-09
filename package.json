@@ -1,0 +1,20 @@
+{
+  "name": "level-smart-volume-for-brave",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A private, adaptive volume leveller for Brave and Chromium browsers.",
+  "type": "module",
+  "scripts": {
+    "assets": "node scripts/generate-assets.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "validate": "node scripts/validate.mjs",
+    "check": "npm run validate && npm test",
+    "package": "node scripts/package.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
+  }
+}

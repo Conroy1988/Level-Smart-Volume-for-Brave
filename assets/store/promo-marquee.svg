@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1400" y2="560"><stop stop-color="#191129"/><stop offset=".53" stop-color="#0C0B12"/><stop offset="1" stop-color="#171329"/></linearGradient>
+    <radialGradient id="orb"><stop stop-color="#C4B6FF"/><stop offset=".3" stop-color="#8968FF"/><stop offset=".76" stop-color="#4B2AA4"/><stop offset="1" stop-color="#221443"/></radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="80"/></filter>
+    <linearGradient id="wave" x1="0" x2="1"><stop stop-color="#FFF"/><stop offset="1" stop-color="#58E9D4"/></linearGradient>
+  </defs>
+  <rect width="1400" height="560" fill="url(#bg)"/>
+  <circle cx="1200" cy="30" r="360" fill="#7044E9" opacity=".18" filter="url(#blur)"/>
+  <circle cx="1095" cy="280" r="205" fill="none" stroke="#A78FFF" stroke-opacity=".15" stroke-width="3"/>
+  <circle cx="1095" cy="280" r="156" fill="url(#orb)"/>
+  <circle cx="1095" cy="280" r="156" fill="none" stroke="#DED5FF" stroke-opacity=".24" stroke-width="3"/>
+  <path d="M965 296h58l33-108 63 184 44-133 29 57h52" fill="none" stroke="url(#wave)" stroke-width="21" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="104" y="142" fill="#B7A7FF" font-family="Arial, sans-serif" font-size="25" font-weight="700" letter-spacing="9">LEVEL</text>
+  <text x="104" y="230" fill="#FAF8FF" font-family="Arial, sans-serif" font-size="67" font-weight="800">Quiet dialogue up.</text>
+  <text x="104" y="308" fill="#FAF8FF" font-family="Arial, sans-serif" font-size="67" font-weight="800">Sudden blasts down.</text>
+  <text x="104" y="370" fill="#AAA3BA" font-family="Arial, sans-serif" font-size="25">Automatic loudness levelling. Dialogue clarity. Peak protection.</text>
+  <rect x="104" y="418" width="226" height="47" rx="23.5" fill="#7555E7"/>
+  <text x="137" y="448" fill="#FFF" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2">100% LOCAL AUDIO</text>
+</svg>

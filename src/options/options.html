@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Level settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="Level settings home">
+          <img src="../../assets/icons/icon-128.png" width="52" height="52" alt="" />
+          <span><strong>LEVEL</strong><small>Smart Volume for Brave</small></span>
+        </a>
+        <span class="privacy-chip">100% LOCAL AUDIO</span>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="intro">
+        <span class="eyebrow">CONTROL ROOM</span>
+        <h1>Make Level sound like <em>your</em> world.</h1>
+        <p>These settings shape every listening mode. The safe defaults are already tuned for natural speech and controlled peaks.</p>
+      </section>
+
+      <form id="settings-form">
+        <section class="settings-card">
+          <div class="card-heading">
+            <span class="number">01</span>
+            <div><h2>Everyday defaults</h2><p>What Level selects before a website has its own memory.</p></div>
+          </div>
+          <div class="field-grid">
+            <label class="field">
+              <span>Default listening mode</span>
+              <select id="default-preset" name="defaultPreset">
+                <option value="balanced">Balanced</option>
+                <option value="dialogue">Dialogue</option>
+                <option value="cinema">Cinema</option>
+                <option value="night">Night</option>
+              </select>
+              <small>Balanced is recommended for mixed web audio.</small>
+            </label>
+            <label class="field">
+              <span>Default output</span>
+              <div class="range-row"><input id="default-volume" name="defaultVolume" type="range" min="50" max="200" step="1" /><output id="default-volume-output">100%</output></div>
+              <small>Applied after smart levelling and peak control.</small>
+            </label>
+          </div>
+          <label class="toggle-row">
+            <span><strong>Offer to remember new websites</strong><small>Preselect website memory when Level first sees a domain.</small></span>
+            <span class="switch"><input id="remember-sites" name="rememberSites" type="checkbox" /><i aria-hidden="true"></i></span>
+          </label>
+          <label class="toggle-row">
+            <span><strong>Show the ON badge</strong><small>Keep a visible reminder on tabs whose audio is being processed.</small></span>
+            <span class="switch"><input id="show-badge" name="showBadge" type="checkbox" /><i aria-hidden="true"></i></span>
+          </label>
+        </section>
+
+        <section class="settings-card">
+          <div class="card-heading">
+            <span class="number">02</span>
+            <div><h2>Audio guardrails</h2><p>Advanced limits shared by every listening mode.</p></div>
+          </div>
+          <div class="advanced-grid">
+            <label class="field range-field">
+              <span>Maximum automatic lift <output id="max-boost-output">+16 dB</output></span>
+              <input id="max-boost" name="maxBoostDb" type="range" min="6" max="24" step="1" />
+              <small>Caps how far Level may raise genuinely quiet material.</small>
+            </label>
+            <label class="field range-field">
+              <span>Loudness bias <output id="target-offset-output">0 dB</output></span>
+              <input id="target-offset" name="targetOffsetDb" type="range" min="-6" max="4" step="0.5" />
+              <small>Moves every mode's target quieter or louder.</small>
+            </label>
+            <label class="field range-field">
+              <span>Safety ceiling <output id="limiter-output">−1 dB</output></span>
+              <input id="limiter-ceiling" name="limiterCeilingDb" type="range" min="-8" max="-0.5" step="0.5" />
+              <small>The maximum peak target; lower values leave more headroom.</small>
+            </label>
+          </div>
+          <div class="safety-note"><strong>Hearing note</strong><span>Level reduces surprise and inconsistency, but it cannot know your headphone sensitivity or safe listening exposure. Keep your device volume comfortable.</span></div>
+        </section>
+
+        <section class="settings-card">
+          <div class="card-heading with-action">
+            <span class="number">03</span>
+            <div><h2>Website memory</h2><p>Saved locally in this browser profile and never uploaded.</p></div>
+            <button class="text-button danger" id="clear-sites" type="button">Clear all</button>
+          </div>
+          <div class="site-list" id="site-list"></div>
+        </section>
+
+        <section class="privacy-card">
+          <div class="shield">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 6 7v7c0 7 4 12.2 10 15 6-2.8 10-8 10-15V7L16 3Zm-2 18-4-4 1.7-1.7 2.3 2.3 6.3-6.3L22 13l-8 8Z"/></svg>
+          </div>
+          <div><span class="eyebrow">THE LEVEL PROMISE</span><h2>Your audio stays yours.</h2><p>No audio recordings. No servers. No analytics. No accounts. No advertisements. Level processes the activated tab in memory and plays it straight back through your device.</p><a href="privacy.html" target="_blank">Read the full privacy policy</a></div>
+        </section>
+
+        <section class="support-card">
+          <div class="coffee-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><path d="M5 8h19v4h2.5a4.5 4.5 0 0 1 0 9H24v1a6 6 0 0 1-6 6h-7a6 6 0 0 1-6-6V8Zm19 7v3h2.5a1.5 1.5 0 0 0 0-3H24ZM9 12v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V12H9Zm5.5 8.5-3.4-3.1a2.2 2.2 0 0 1 3.4-2.8 2.2 2.2 0 0 1 3.4 2.8l-3.4 3.1Z"/></svg>
+          </div>
+          <div><strong>Level is independent and ad-free.</strong><span>If it makes your browsing better, you can help fund continued development.</span></div>
+          <a href="https://ko-fi.com/D4P124RWI9" target="_blank" rel="noreferrer">Support on Ko-fi ↗</a>
+        </section>
+
+        <div class="actions">
+          <button class="secondary-button" id="reset-defaults" type="button">Restore safe defaults</button>
+          <button class="primary-button" type="submit">Save settings</button>
+        </div>
+      </form>
+    </main>
+
+    <div class="save-status" id="save-status" role="status" aria-live="polite">Settings saved</div>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

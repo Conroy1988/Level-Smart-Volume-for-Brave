@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Level</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="app" aria-busy="true">
+      <header class="topbar">
+        <div class="brand">
+          <img src="../../assets/icons/icon-48.png" alt="" width="36" height="36" />
+          <div>
+            <div class="brand-name">LEVEL</div>
+            <div class="brand-tagline">Smart volume, finally.</div>
+          </div>
+        </div>
+        <button class="icon-button" id="settings-button" type="button" aria-label="Open Level settings" title="Settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.4a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2Zm9 3.6-2.2-1.3.1-1.2-1.8-3-1.2.4L13.8 3h-3.6L8.1 6.9l-1.2-.4-1.8 3 .1 1.2L3 12l2.2 1.3-.1 1.2 1.8 3 1.2-.4 2.1 3.9h3.6l2.1-3.9 1.2.4 1.8-3-.1-1.2L21 12Zm-9 5.7a5.7 5.7 0 1 1 0-11.4 5.7 5.7 0 0 1 0 11.4Z"/></svg>
+        </button>
+      </header>
+
+      <section class="tab-card" aria-label="Current tab">
+        <div class="tab-copy">
+          <span class="eyebrow">CURRENT TAB</span>
+          <strong id="tab-title">Loading…</strong>
+          <span id="tab-host">Checking audio access</span>
+        </div>
+        <span class="status-pill" id="status-pill"><i></i><span>READY</span></span>
+      </section>
+
+      <section class="hero" aria-labelledby="level-state">
+        <div class="orb" id="level-orb" aria-hidden="true">
+          <div class="orb-ring orb-ring-one"></div>
+          <div class="orb-ring orb-ring-two"></div>
+          <div class="orb-core">
+            <svg viewBox="0 0 40 40"><path d="M6 23h6l4-12 7 22 5-15 3 5h3" /></svg>
+          </div>
+        </div>
+        <h1 id="level-state">Ready to level</h1>
+        <p id="level-description">Quiet dialogue rises. Sudden volume spikes stay contained.</p>
+        <button class="power-button" id="power-button" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v9m6.4-5.4a9 9 0 1 1-12.8 0" /></svg>
+          <span>LEVEL THIS TAB</span>
+        </button>
+      </section>
+
+      <section class="meter-card" id="meter-card" aria-label="Live loudness meter">
+        <div class="meter-heading">
+          <span>LIVE LEVEL</span>
+          <strong id="gain-readout">Standing by</strong>
+        </div>
+        <div class="meter-track" role="meter" aria-valuemin="-60" aria-valuemax="0" aria-valuenow="-60" id="meter-track">
+          <div class="meter-fill" id="meter-fill"></div>
+          <span class="meter-safe-line"></span>
+        </div>
+        <div class="meter-labels"><span>QUIET</span><span>LEVELLED</span><span>PEAK</span></div>
+      </section>
+
+      <section class="controls" aria-labelledby="mode-heading">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">LISTENING MODE</span>
+            <h2 id="mode-heading">Choose the right shape</h2>
+          </div>
+        </div>
+        <div class="preset-grid" id="preset-grid">
+          <button class="preset" type="button" data-preset="balanced"><span class="preset-icon">◎</span><strong>Balanced</strong><small>Everyday</small></button>
+          <button class="preset" type="button" data-preset="dialogue"><span class="preset-icon">◖</span><strong>Dialogue</strong><small>Clear voices</small></button>
+          <button class="preset" type="button" data-preset="cinema"><span class="preset-icon">◇</span><strong>Cinema</strong><small>Keep impact</small></button>
+          <button class="preset" type="button" data-preset="night"><span class="preset-icon">☾</span><strong>Night</strong><small>Tame shocks</small></button>
+        </div>
+      </section>
+
+      <section class="volume-card">
+        <div class="volume-heading">
+          <label for="volume-slider">OUTPUT</label>
+          <output for="volume-slider" id="volume-output">100%</output>
+        </div>
+        <input id="volume-slider" type="range" min="50" max="200" step="1" value="100" />
+        <div class="range-labels"><span>Gentler</span><span>Original</span><span>Boosted</span></div>
+      </section>
+
+      <label class="memory-row" for="memory-toggle">
+        <span>
+          <strong>Remember this website</strong>
+          <small>Restore its mode and output next time</small>
+        </span>
+        <span class="switch"><input id="memory-toggle" type="checkbox" /><span aria-hidden="true"></span></span>
+      </label>
+
+      <details class="audible-panel" id="audible-panel">
+        <summary><span><i class="sound-dot"></i> Other audible tabs</span><span class="count" id="audible-count">0</span></summary>
+        <div class="audible-list" id="audible-list"></div>
+      </details>
+
+      <footer>
+        <span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2 4 4.5v4.2c0 4.1 2.4 7.5 6 9.3 3.6-1.8 6-5.2 6-9.3V4.5L10 2Zm-1 11-2.3-2.3 1.1-1.1L9 10.8l3.4-3.4 1.1 1.1L9 13Z" /></svg> Audio never leaves your device</span>
+        <span id="version">v1.0.0</span>
+      </footer>
+    </main>
+
+    <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

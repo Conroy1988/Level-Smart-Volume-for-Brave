@@ -1,0 +1,63 @@
+name: Bug report
+description: Report a reproducible Level problem
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping make Level more reliable. Do not include private audio, account details, or sensitive URLs.
+  - type: input
+    id: version
+    attributes:
+      label: Level version
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Brave 1.xx / Chromium xxx
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Audio capture or silence
+        - Loudness levelling
+        - Dialogue / filters
+        - Peak control or distortion
+        - Popup
+        - Settings / site memory
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      placeholder: Tell us what you opened, what you clicked, and what happened.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context
+      description: Include the listening mode, output percentage, audio device type, and whether reloading the tab changed anything.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I reproduced this on a normal http/https page rather than a protected browser page.
+          required: true
+        - label: I started at a safe device volume before testing.
+          required: true
