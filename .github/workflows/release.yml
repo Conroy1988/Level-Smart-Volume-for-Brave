@@ -3,6 +3,12 @@ name: Publish release
 on:
   push:
     tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag to publish or refresh
+        required: true
+        default: v1.0.0
 
 permissions:
   contents: write
@@ -14,6 +20,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.tag || github.ref_name }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v7
@@ -27,7 +35,13 @@ jobs:
       - name: Verify and package
         run: npm run assets && npm run check && npm run package
 
-      - name: Publish GitHub release
+      - name: Publish or refresh GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "${GITHUB_REF_NAME}" dist/*.zip --generate-notes --verify-tag
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          if gh release view "${RELEASE_TAG}" >/dev/null 2>&1; then
+            gh release upload "${RELEASE_TAG}" dist/*.zip --clobber
+          else
+            gh release create "${RELEASE_TAG}" dist/*.zip --generate-notes --verify-tag
+          fi
