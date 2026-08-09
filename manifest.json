@@ -3,7 +3,7 @@
   "name": "Level — Smart Volume for Brave (Unofficial)",
   "short_name": "Level",
   "description": "Quiet dialogue up. Sudden blasts down. Smart, private volume levelling for every tab.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minimum_chrome_version": "116",
   "permissions": [
     "activeTab",
