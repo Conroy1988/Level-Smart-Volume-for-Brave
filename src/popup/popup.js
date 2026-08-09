@@ -1,5 +1,10 @@
 import { PRESETS } from "../shared/config.js";
 import { Message, Target } from "../shared/protocol.js";
+import {
+  PowerAction,
+  powerActionForSession,
+  sessionAfterPowerResponse
+} from "./power-state.js";
 
 const manifest = chrome.runtime.getManifest();
 const elements = {
@@ -163,21 +168,24 @@ async function initialise() {
 }
 
 elements.powerButton.addEventListener("click", async () => {
+  const action = powerActionForSession(state.session);
   setBusy(true);
   try {
-    const response = state.session
-      ? await send(Message.STOP, { tabId: state.tab.id })
-      : await send(Message.START, {
-          tabId: state.tab.id,
-          preset: state.preset,
-          volume: state.volume,
-          rememberSite: state.rememberSite
-        });
+    const response =
+      action === PowerAction.STOP
+        ? await send(Message.STOP, { tabId: state.tab.id })
+        : await send(Message.START, {
+            tabId: state.tab.id,
+            preset: state.preset,
+            volume: state.volume,
+            rememberSite: state.rememberSite
+          });
     if (!response?.ok) throw new Error(response?.error);
-    state.session = state.session ? null : response.session;
+    state.session = sessionAfterPowerResponse(action, response);
     render();
   } catch (error) {
     showError(error.message);
+    await initialise();
   } finally {
     setBusy(false);
   }
