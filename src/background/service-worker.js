@@ -6,6 +6,7 @@ import {
   profileForHost,
   safeHostname
 } from "../shared/config.js";
+import { userFacingError } from "../shared/error-messages.js";
 import { Message, Target } from "../shared/protocol.js";
 
 const OFFSCREEN_URL = "src/offscreen/offscreen.html";
@@ -79,20 +80,6 @@ async function ensureOffscreen() {
 async function sendOffscreen(message) {
   await ensureOffscreen();
   return chrome.runtime.sendMessage({ ...message, target: Target.OFFSCREEN });
-}
-
-function userFacingError(error) {
-  const message = String(error?.message || error || "Unknown audio error");
-  if (/not been invoked|activeTab/i.test(message)) {
-    return "Brave needs a fresh click on Level before this tab can be captured. Close the popup, open it again, and retry.";
-  }
-  if (/cannot capture|not allowed|restricted/i.test(message)) {
-    return "This is a protected browser page and Brave does not allow extensions to process its audio.";
-  }
-  if (/stream|media|capture/i.test(message)) {
-    return "Brave could not open this tab's audio stream. Reload the tab and try Level again.";
-  }
-  return message;
 }
 
 function canCaptureUrl(url) {
@@ -184,6 +171,19 @@ async function startLevel(message) {
   const tab = await currentTab(message.tabId);
   if (!tab || !Number.isInteger(tab.id) || !canCaptureUrl(tab.url)) {
     throw new Error("This protected page cannot be processed by Level.");
+  }
+
+  const existingSession = await getSession(tab.id);
+  if (existingSession) {
+    await updateBadge(tab.id, true).catch(() => {});
+    return { ok: true, session: existingSession, alreadyActive: true };
+  }
+
+  const existingCapture = (await chrome.tabCapture.getCapturedTabs()).find(
+    (capture) => capture.tabId === tab.id
+  );
+  if (existingCapture) {
+    throw new Error("Level already has an active stream for this tab.");
   }
 
   const settings = await loadSettings();
