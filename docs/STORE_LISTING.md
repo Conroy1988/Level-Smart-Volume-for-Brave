@@ -84,6 +84,8 @@ No. Level does not use or load remote code. All JavaScript and AudioWorklet code
 
 Level handles website information (the hostname and title of current/audible tabs) and user-generated configuration (settings and site preferences) solely to provide its user-facing features. This data is stored locally and is not transmitted. Tab audio is processed transiently in memory and is neither stored nor transmitted.
 
+Chrome Web Store data categories: **Web history** (current/audible tab hostname and title) and **Website content** (the activated tab's transient audio stream). These categories apply even though all handling is local.
+
 Data is not sold, used for advertising, used for creditworthiness or lending, transferred for unrelated purposes, or used outside Level's single purpose.
 
 ## Assets
